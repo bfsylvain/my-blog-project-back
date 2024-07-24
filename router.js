@@ -30,11 +30,11 @@ router.get("/articles/:id", articleControllers.getArticleInfos);
 router.delete("/articles/:id", articleControllers.deleteArticle);
 
 // Commentaires
-router.patch("/articles/:id/comments", articleControllers.addComment);
+router.patch("/articles/:id/comments", authMiddleware.checkUser, articleControllers.addComment);
 
 //likes
-router.patch("/articles/:id/add-liker", articleControllers.addLiker);
-router.patch("/articles/:id/remove-liker", articleControllers.removeLiker);
+router.patch("/articles/:id/add-liker",authMiddleware.checkUser, articleControllers.addLiker);
+router.patch("/articles/:id/remove-liker",authMiddleware.checkUser, articleControllers.removeLiker);
 
 //upload profile image
 router.post('/upload', upload.single('file'), uploadControllers.uploadProfile);

@@ -22,21 +22,4 @@ const checkUser = (req, res, next) => {
   });
 };
 
-const requireAuth = (req, res, next) => {
-  const token = req.cookies.jwt;
-  if (token) {
-    jwt.verify(token, process.env.TOKEN_SECRET, async (err, decodedToken) => {
-      if (err) {
-        console.log(err.message);
-        res.status(401).send("Unauthorized");
-      } else {
-        res.locals.user = { id: decodedToken.id };
-        next();
-      }
-    });
-  } else {
-    return res.status(401).json({ error: "Pas de token" });
-  }
-};
-
-module.exports = { checkUser, requireAuth };
+module.exports = { checkUser };
