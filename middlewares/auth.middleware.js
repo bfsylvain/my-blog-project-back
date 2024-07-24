@@ -15,7 +15,6 @@ const checkUser = (req, res, next) => {
       res.cookie("jwt", "", { maxAge: 1 });
       return res.status(401).json({ error: err.message });
     }
-    console.log(decodedToken.id)
     const user = await userModel.findById(decodedToken.id.id);
     res.locals.user = user;
     next();

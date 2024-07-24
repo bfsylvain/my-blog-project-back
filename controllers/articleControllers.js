@@ -9,7 +9,6 @@ const ArticleManager = new articleManagers();
 
 const createArticle = async (req, res) => {
   let fileName;
-  console.log("toto");
   const validMimeTypes = ["image/jpg", "image/jpeg", "image/png"];
 
   try {
@@ -38,7 +37,7 @@ const createArticle = async (req, res) => {
       userPseudo: req.body.userPseudo,
       title: req.body.title,
       text: req.body.text,
-      pictures: req.file ? `/uploads/pictures/${fileName}` : "",
+      pictures: req.file ? [`/uploads/pictures/${fileName}`] : ["/uploads/pictures/random-picture.jpg"],
       likers: [],
       comments: [],
     });
