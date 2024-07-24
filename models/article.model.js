@@ -10,6 +10,10 @@ const articleSchema = new mongoose.Schema(
       type: String,
       required: true
     },
+    userAvatar: {
+      type: String,
+      default: "/uploads/pictures/random-picture.jpg",
+    },
     title: {
       type: String,
       required: false,
@@ -19,7 +23,7 @@ const articleSchema = new mongoose.Schema(
     },
     pictures: {
       type: [String],
-      default: "/public/uploads/pictures/random-picture.jpg",
+      default: "/uploads/pictures/random-picture.jpg",
     },
     text: {
       type: String,
@@ -35,6 +39,10 @@ const articleSchema = new mongoose.Schema(
         {
           userId: String,
           userPseudo: String,
+          userAvatar: {
+            type: String,
+            default:"/uploads/pictures/random-picture.jpg"
+          },
           text: String,
           timestamp: Number,
         },
