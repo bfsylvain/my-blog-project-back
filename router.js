@@ -8,6 +8,7 @@ const upload = multer({
 
 const router = express.Router();
 
+const authMiddleware = require("./middlewares/auth.middleware")
 const authControllers = require("./controllers/authController");
 const userControllers = require("./controllers/userControllers");
 const articleControllers = require("./controllers/articleControllers");
@@ -23,7 +24,7 @@ router.get("/users", userControllers.getUsers);
 router.get("/users/:id", userControllers.getUserInfos);
 
 // Articles
-router.post("/articles", upload.single('file'), articleControllers.createArticle);
+router.post("/articles", authMiddleware.checkUser, upload.single('file'), articleControllers.createArticle);
 router.get("/articles", articleControllers.getArticles);
 router.get("/articles/:id", articleControllers.getArticleInfos);
 router.delete("/articles/:id", articleControllers.deleteArticle);

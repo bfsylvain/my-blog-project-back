@@ -9,6 +9,7 @@ const ArticleManager = new articleManagers();
 
 const createArticle = async (req, res) => {
   let fileName;
+  console.log("toto");
   const validMimeTypes = ["image/jpg", "image/jpeg", "image/png"];
 
   try {
