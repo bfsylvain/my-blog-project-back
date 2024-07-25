@@ -17,7 +17,7 @@ const uploadControllers = require('./controllers/uploadControllers');
 // Identification
 router.post("/signUp", authControllers.signUp);
 router.post("/signIn", authControllers.signIn);
-router.get("/logout", authControllers.logOut);
+router.get("/logOut", authControllers.logOut);
 
 // Users
 router.get("/users", userControllers.getUsers);
@@ -25,9 +25,9 @@ router.get("/users/:id", userControllers.getUserInfos);
 
 // Articles
 router.post("/articles", authMiddleware.checkUser, upload.single('file'), articleControllers.createArticle);
-router.get("/articles", articleControllers.getArticles);
+router.get("/articles", articleControllers.getArticles); // WOW
 router.get("/articles/:id", articleControllers.getArticleInfos);
-router.delete("/articles/:id", articleControllers.deleteArticle);
+router.delete("/articles/:id", articleControllers.deleteArticle); // WOW
 
 // Commentaires
 router.patch("/articles/:id/comments", authMiddleware.checkUser, articleControllers.addComment);

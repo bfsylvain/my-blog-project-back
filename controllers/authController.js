@@ -36,17 +36,17 @@ const signIn = async (req, res) => {
 
   try {
     const user = await AuthManager.identifyUser(email, password);
-    const token = createToken({id: user._id, pseudo: user.pseudo});
+    const token = createToken({id: user._id, pseudo: user.pseudo, avatar: user.avatar});
     res.cookie("jwt", token, { httpOnly: false, maxAge: maxAge });
-    res.status(200).send({id: user._id, email: user.email});
+    res.status(200).send({id: user._id, email: user.email, avatar: user.avatar});
   } catch (err) {
     res.status(200).send({error: "identifiants incorrects"});
   }
 };
 
 const logOut = async (_, res) => {
-  res.cookie("jwt", "", { maxAge: 1 });
-  res.redirect("/");
+    res.cookie("jwt", "", { maxAge: 1 });
+    res.redirect("/");
 };
 
 module.exports = {
