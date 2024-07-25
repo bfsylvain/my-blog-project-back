@@ -1,7 +1,7 @@
 const userManager = require("../managers/UserManager");
 const authManager = require("../managers/AuthManager");
 const userModel = require("../models/user.model");
-const Errors = require("../utils/errors.utils");
+const signUpErrors = require("../utils/errors.utils");
 const jwt = require("jsonwebtoken");
 
 const UserManager = new userManager();
