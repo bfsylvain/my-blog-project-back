@@ -24,6 +24,7 @@ router.get("/users", userControllers.getUsers);
 router.get("/users/:id", userControllers.getUserInfos);
 
 // Articles
+router.get("/articles", articleControllers.getArticles);
 router.post("/articles", authMiddleware.checkUser, upload.single('file'), articleControllers.createArticle);
 router.get("/articles/:id", articleControllers.getArticleInfos);
 
