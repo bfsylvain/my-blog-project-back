@@ -23,7 +23,7 @@ const articleSchema = new mongoose.Schema(
     },
     pictures: {
       type: [String],
-      default: ["/uploads/pictures/random-picture.jpg"],
+      default: ["/uploads/pictures/random-picture-cocktail.jpg"],
     },
     text: {
       type: String,

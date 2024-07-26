@@ -25,9 +25,7 @@ router.get("/users/:id", userControllers.getUserInfos);
 
 // Articles
 router.post("/articles", authMiddleware.checkUser, upload.single('file'), articleControllers.createArticle);
-router.get("/articles", articleControllers.getArticles); // WOW
 router.get("/articles/:id", articleControllers.getArticleInfos);
-router.delete("/articles/:id", articleControllers.deleteArticle); // WOW
 
 // Commentaires
 router.patch("/articles/:id/comments", authMiddleware.checkUser, articleControllers.addComment);

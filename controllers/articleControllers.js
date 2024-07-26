@@ -17,7 +17,7 @@ const createArticle = async (req, res) => {
         throw new Error("invalid file type");
       }
 
-      if (req.file.size > 500000) throw Error("file oversize");
+      if (req.file.size > 5000000) throw Error("file oversize");
 
       fileName = `${uuidv4()}.jpg`;
       const filePath = path.join(
@@ -37,7 +37,7 @@ const createArticle = async (req, res) => {
       userPseudo: req.body.userPseudo,
       title: req.body.title,
       text: req.body.text,
-      pictures: req.file ? [`/uploads/pictures/${fileName}`] : ["/uploads/pictures/random-picture.jpg"],
+      pictures: req.file ? [`/uploads/pictures/${fileName}`] : ["/uploads/pictures/random-picture-3.jpg"],
       likers: [],
       comments: [],
     });
