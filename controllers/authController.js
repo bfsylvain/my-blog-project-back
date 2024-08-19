@@ -47,8 +47,7 @@ const signIn = async (req, res) => {
 const logOut = async (_, res) => {
   try {
     res.cookie("jwt", "", { maxAge: 1 });
-    // res.redirect("/");
-    res.status(200).send("log out avec succès")
+    res.status(200).send({message: "log out avec succès"})
   } catch(err) {
     res.status(401).send(err)
   }
