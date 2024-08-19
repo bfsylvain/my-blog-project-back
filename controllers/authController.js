@@ -37,7 +37,6 @@ const signIn = async (req, res) => {
   try {
     const user = await AuthManager.identifyUser(email, password);
     const token = createToken({id: user._id, pseudo: user.pseudo, avatar: user.avatar});
-    console.log(token)
     res.cookie("jwt", token, { httpOnly: false, maxAge: maxAge });
     res.status(200).send({id: user._id, email: user.email, avatar: user.avatar, pseudo: user.pseudo});
   } catch (err) {
@@ -46,8 +45,13 @@ const signIn = async (req, res) => {
 };
 
 const logOut = async (_, res) => {
+  try {
     res.cookie("jwt", "", { maxAge: 1 });
-    res.redirect("/");
+    // res.redirect("/");
+    res.status(200).send("log out avec succès")
+  } catch(err) {
+    res.status(401).send(err)
+  }
 };
 
 module.exports = {
