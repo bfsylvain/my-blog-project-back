@@ -51,7 +51,6 @@ userSchema.statics.login = async function (email, password) {
   if (!isMatch) {
     throw new Error("Mot de passe incorrect");
   }
-
   return user;
 };
 

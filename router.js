@@ -27,7 +27,7 @@ router.get("/users/:id", userControllers.getUserInfos);
 router.get("/articles", articleControllers.getArticles);
 router.post("/articles", authMiddleware.checkUser, upload.single('file'), articleControllers.createArticle);
 router.get("/articles/:id", articleControllers.getArticleInfos);
-
+router.delete("/articles/:id", articleControllers.deleteArticle);
 // Commentaires
 router.patch("/articles/:id/comments", authMiddleware.checkUser, articleControllers.addComment);
 

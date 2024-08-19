@@ -79,7 +79,6 @@ const addComment = async (req, res) => {
     text: req.body.text,
     timestamp: Date.now(),
   };
-
   if (!ObjectID.isValid(articleId))
     return res.status(400).send(`ID unknown : ${articleId}`);
   try {
